@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Ecommerce</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+          
+        }
+
+        .perfil-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-card,
+        .response-card {
+            width: 45%;
+            margin: 0 10px;
+            height: 400px; 
+        }
+
+        .button-card ul {
+            height: 100%; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+
+        .response-card .response-container {
+            height: 100%; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between; 
+            margin-top: 10px; 
+            overflow-y: auto; 
+        }
+
+        .response-card pre {
+            color: white; 
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Settings Ecommerce</h1>
+    <section class="perfil-container">
+        <div class="button-card">
+            <ul class="card-body">
+                <li class="list-group list-group-flush">
+                    <button onclick="getUser()" class="btn btn-info m-2">Get All User</button>
+                    <button onclick="getRole()" class="btn btn-primary m-2">Get Role</button>
+                    <button onclick="changeRole()" class="btn btn-warning m-2">Change Role</button>
+                    <button onclick="goToRegister()" class="btn btn-warning m-2">Register</button>
+                    <button onclick="deleteUser()" class="btn btn-danger m-2">Eliminar Usuario</button>
+                    <button onclick="deleteInactiveUsers()" class="btn btn-danger m-2">Eliminar Usuarios Inactivos</button>
+                    <button onclick="openAPIDocumentation()" class="btn btn-success m-2">Documentación API</button>
+                    <button onclick="goToProducts()" class="btn btn-light m-2">Volver a Products</button>
+                    <button onclick="clearScreen()" class="btn btn-secondary m-2">Limpiar Pantalla</button>
+                </li>
+                </li>
+            </ul>
+        </div>
+        <div class="response-card">
+            <div class="response-container">
+                <h2>Respuesta del Servidor</h2>
+                <pre id="response"></pre>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function getUser() {
+                    fetch("http://localhost:8080/api/session")
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Error en la solicitud: ${response.statusText}`);
+                            }
+                            return response.json();
+                        })
+                        .then(users => {
+                            console.log("Lista de usuarios:", users);
+                            const responseContainer = document.getElementById('response');
+                            responseContainer.textContent = JSON.stringify(users, null, 2);
+                        })
+                        .catch(error => {
+                            console.error(`Error al obtener la lista de usuarios: ${error.message}`);
+                            const responseContainer = document.getElementById('response');
+                            responseContainer.textContent = `Error: ${error.message}`;
+                        });
+        }
+
+
+        function getRole() {
+            const uid = prompt("Ingrese el UID del usuario, ejemplo: 651f5775090c8a47a837d76a");
+            if (uid) {
+                fetch(`http://localhost:8080/api/session/premium/${uid}`)
+                .then(response => {
+                    if (response.status === 404) {
+                        return response.json(); 
+                    } else if (!response.ok) {
+                        throw new Error(`Error en la solicitud: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error(`Error al cambiar el rol del usuario: ${data.error}`);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = `Error: ${data.error}`;
+                    } else {
+                        console.log("Rol del usuario actualizado:", data.role);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = JSON.stringify(data, null, 2);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al cambiar el rol del usuario: ${error.message}`);
+                    const responseContainer = document.getElementById('response');
+                    responseContainer.textContent = `Error: ${error.message}`;
+                });
+            }
+        }
+
+
+        function changeRole() {
+            const uid = prompt("Ingrese el UID del usuario, ejemplo: 651f5775090c8a47a837d76a");
+            if (uid) {
+                fetch(`http://localhost:8080/api/session/premium/${uid}`, {
+                    method: "POST",
+                })
+                .then(response => {
+                    if (response.status === 404) {
+                        return response.json(); 
+                    } else if (!response.ok) {
+                        throw new Error(`Error en la solicitud: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error(`Error al cambiar el rol del usuario: ${data.error}`);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = `Error: ${data.error}`;
+                    } else {
+                        console.log("Rol del usuario actualizado:", data.role);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = JSON.stringify(data, null, 2);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al cambiar el rol del usuario: ${error.message}`);
+                    const responseContainer = document.getElementById('response');
+                    responseContainer.textContent = `Error: ${error.message}`;
+                });
+            }
+        }
+
+        function deleteUser() {
+            const uid = prompt("Ingrese el UID del usuario, ejemplo: 651f5775090c8a47a837d76a");
+            if (uid) {
+                fetch(`http://localhost:8080/api/session/${uid}`, {
+                    method: "DELETE",
+                })
+                .then(response => {
+                    if (response.status === 404) {
+                        return response.json(); 
+                    } else if (!response.ok) {
+                        throw new Error(`Error en la solicitud: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error(`Error al elimnar usuario: ${data.error}`);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = `Error: ${data.error}`;
+                    } else {
+                        console.log("Usuario elimnado correctamente:", data.role);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = JSON.stringify(data, null, 2);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al elimnar usuario: ${error.message}`);
+                    const responseContainer = document.getElementById('response');
+                    responseContainer.textContent = `Error: ${error.message}`;
+                });
+            }
+        }
+
+        function deleteInactiveUsers() {
+                fetch(`http://localhost:8080/api/session`, {
+                    method: "DELETE",
+                })
+                .then(response => {
+                    if (response.status === 404) {
+                        return response.json(); 
+                    } else if (!response.ok) {
+                        throw new Error(`Error en la solicitud: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error(`Error al elimnar usuario: ${data.error}`);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = `Error: ${data.error}`;
+                    } else {
+                        console.log("Usuario elimnado correctamente:", data.role);
+                        const responseContainer = document.getElementById('response');
+                        responseContainer.textContent = JSON.stringify(data, null, 2);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al elimnar usuario: ${error.message}`);
+                    const responseContainer = document.getElementById('response');
+                    responseContainer.textContent = `Error: ${error.message}`;
+                });
+        }
+
+
+
+        function goToProducts() {
+            window.location.href = "http://localhost:8080/products";
+        }
+
+        function clearScreen() {
+                location.reload();
+        }
+
+        function openAPIDocumentation() {
+            window.location.href = "http://localhost:8080/api/docs";
+        }
+
+        function goToRegister() {
+            window.location.href = "http://localhost:8080/register";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+[
+  {
+    "title": "Producto 1",
+    "description": "Producto 1",
+    "code": "# 1",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 994,
+    "owner": "48d8d284-0fe4-469b-9d22-03ed8a7f9522",
+    "_id": 1
+  },
+  {
+    "title": "Producto 2",
+    "description": "Producto 2",
+    "code": "# 2",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 997,
+    "owner": "48d8d284-0fe4-469b-9d22-03ed8a7f9522",
+    "_id": 2
+  },
+  {
+    "title": "Producto 3",
+    "description": "Producto 3",
+    "code": "# 3",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "48d8d284-0fe4-469b-9d22-03ed8a7f9522",
+    "_id": 3
+  },
+  {
+    "title": "Producto 4",
+    "description": "Producto 4",
+    "code": "# 4",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "2583c06d-443c-4990-8f64-af6eb8e76e48",
+    "_id": 4
+  },
+  {
+    "title": "Producto 5",
+    "description": "Producto 5",
+    "code": "# 5",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "2583c06d-443c-4990-8f64-af6eb8e76e48",
+    "_id": 5
+  },
+  {
+    "title": "Producto 6",
+    "description": "Producto 6",
+    "code": "# 6",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "2583c06d-443c-4990-8f64-af6eb8e76e48",
+    "_id": 6
+  },
+  {
+    "title": "Producto 7",
+    "description": "Producto 7",
+    "code": "# 7",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "6dd6c539-e751-490d-8f9b-62e4d4bafbba",
+    "_id": 7
+  },
+  {
+    "title": "Producto 8",
+    "description": "Producto 8",
+    "code": "# 8",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "6dd6c539-e751-490d-8f9b-62e4d4bafbba",
+    "_id": 8
+  },
+  {
+    "title": "Producto 9",
+    "description": "Producto 9",
+    "code": "# 9",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "6dd6c539-e751-490d-8f9b-62e4d4bafbba",
+    "_id": 9
+  },
+  {
+    "title": "Producto 10",
+    "description": "Producto 10",
+    "code": "# 10",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "6dd6c539-e751-490d-8f9b-62e4d4bafbba",
+    "_id": 10
+  },
+  {
+    "title": "Producto 11",
+    "description": "Producto 11",
+    "code": "# 11",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "2583c06d-443c-4990-8f64-af6eb8e76e48",
+    "_id": 11
+  },
+  {
+    "title": "Producto 12",
+    "description": "Producto 12",
+    "code": "# 12",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "2583c06d-443c-4990-8f64-af6eb8e76e48",
+    "_id": 12
+  },
+  {
+    "title": "Producto 13",
+    "description": "Producto 13",
+    "code": "# 13",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "48d8d284-0fe4-469b-9d22-03ed8a7f9522",
+    "_id": 13
+  },
+  {
+    "title": "Producto 14",
+    "description": "Producto 14",
+    "code": "# 14",
+    "price": 1500,
+    "status": true,
+    "category": "notebooks",
+    "thumbnail": [
+      "creado ",
+      "creado  2"
+    ],
+    "stock": 1000,
+    "owner": "48d8d284-0fe4-469b-9d22-03ed8a7f9522",
+    "_id": 14
+  }
+]

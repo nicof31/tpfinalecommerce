@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+        }
+
+        label,
+        input,
+        button,
+        a {
+            margin-top: 10px;
+            display: block;
+        }
+
+        button,
+        a {
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        {{#if error}}
+        <p>{{error}}</p>
+        {{/if}}
+
+        <div class="card">
+            <form action="/api/session/emailrecover" method="post">
+                <h1>Recuperar Contraseña</h1>
+                <p>Para recuperar tu contraseña, ingresa tu dirección de correo electrónico. Se enviará un enlace para recuperar la contraseña a tu correo electrónico.</p>
+                <label for="email">Correo</label>
+                <input type="email" name="email" id="email" placeholder="Introduzca su correo electrónico" />
+
+                <button class="btn-success" type="submit">Enviar</button>
+
+                <a href="/login">Volver a Login</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+[
+  {
+    "amount": 6150,
+    "purchaser": "postaman@gmail.com",
+    "code": "6c71ef70-5f9d-4d62-b6fd-c0c8ce8542b9",
+    "purchase_datetime": "2023-08-13T21:19:21.561Z"
+  },
+  {
+    "amount": 3150,
+    "purchaser": "postaman@gmail.com",
+    "code": "9a79cfb8-a116-48e2-ba6b-0662de84923f",
+    "purchase_datetime": "2023-08-13T21:29:57.983Z"
+  },
+  {
+    "amount": 100,
+    "purchaser": "userCoder@coder.com",
+    "code": "f3048484-a4bb-4bab-9ba3-181fc5398c76",
+    "purchase_datetime": "2023-08-15T11:48:33.252Z"
+  },
+  {
+    "amount": 4500,
+    "purchaser": "nfrugoni31@gmail.com",
+    "code": "f1faeae5-49ce-42b5-99d6-32a084079ee3",
+    "purchase_datetime": "2023-10-12T13:46:05.137Z"
+  },
+  {
+    "amount": 1500,
+    "purchaser": "nfrugoni31@gmail.com",
+    "code": "d632f9a2-ae63-42c2-8e85-0f8b26c4a9e7",
+    "purchase_datetime": "2023-10-12T13:46:18.897Z"
+  },
+  {
+    "amount": 3000,
+    "purchaser": "nfrugoni31@gmail.com",
+    "code": "28f4847a-bede-41f5-8718-8589c8aa4271",
+    "purchase_datetime": "2023-10-12T13:53:16.200Z"
+  },
+  {
+    "amount": 4500,
+    "purchaser": "nfrugoni31@gmail.com",
+    "code": "2c661493-479a-4a6d-9c83-f82eb58a4f23",
+    "purchase_datetime": "2023-10-12T17:34:26.180Z"
+  }
+]

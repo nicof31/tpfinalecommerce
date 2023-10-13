@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Token Exipiro</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 600px;
+    }
+    
+    h1 {
+      color: red;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #337ab7;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>TOKEN EXPIRADO</h1>
+    
+    {{#if error}}
+      <p>{{error}}</p>
+    {{/if}}
+    
+    <p>Se venció el tiempo del token</p>
+    <p>Por favor, ingrese los datos nuevamente para generar un nuevo token.</p>
+
+    <a class="btn" href="/emailsendrecover">Aceptar</a>
+  </div>
+</body>
+</html>

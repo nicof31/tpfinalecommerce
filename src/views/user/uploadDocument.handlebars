@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Carga de Documentos</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .document-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .document-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            width: 350px; 
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .document-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .file-input {
+            margin-bottom: 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            margin-right: 5px;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #337ab7; 
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #5cb85c; 
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e; 
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carga de Documentos</h1>
+    <div id="result" style="margin-bottom: 20px;"></div>
+    <button onclick="volverProducts()" class="btn btn-primary">Volver a Products</button>
+    <div class="document-container">
+        <div class="document-card">
+            <div class="document-title">Product Image</div>
+            <form id="formProductImage" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="productImage" id="file1" accept=".pdf, .jpg, .png, .wep" class="file-input" required>
+                    <label>Seleccione Archivo IMG-PNG-WEP</label>
+                </div>
+                <button type="button" onclick="uploadDocument('productImage', 'formProductImage')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+        <div class="document-card">
+            <div class="document-title">Profile Image</div>
+            <form id="formProfileImage" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="profileImage" id="file1" accept=".pdf, .jpg, .png, .wep" class="file-input" required>
+                    <label>Seleccione Archivo IMG-PNG-WEP</label>
+                </div>
+                <button type="button" onclick="uploadDocument('profileImage', 'formProfileImage')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+        <div class="document-card">
+            <div class="document-title">Document PDF</div>
+            <form id="formDocument" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="document" id="file1" accept=".pdf" class="file-input" required>
+                    <label>Seleccione Archivo PDF</label>
+                </div>
+                <button type="button" onclick="uploadDocument('document', 'formDocument')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+        <div class="document-card">
+            <div class="document-title">Document Identificacion</div>
+            <form id="formDocumentIdentificacion" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="documentIdentificacion" id="file1" accept=".pdf, .jpg, .png, .wep" class="file-input" required>
+                    <label>Seleccione Archivo IMG-PNG-WEP-PDF</label>
+                </div>
+                <button type="button" onclick="uploadDocument('documentIdentificacion', 'formDocumentIdentificacion')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+        <div class="document-card">
+            <div class="document-title">Document Domicilio</div>
+            <form id="formDocumentDomicilio" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="documentDomicilio" id="file1" accept=".pdf, .jpg, .png, .wep" class="file-input" required>
+                    <label>Seleccione Archivo IMG-PNG-WEP-PDF</label>
+                </div>
+                <button type="button" onclick="uploadDocument('documentDomicilio', 'formDocumentDomicilio')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+        <div class="document-card">
+            <div class="document-title">Document Estado de cuenta</div>
+            <form id="formDocumentEstadodecuenta" enctype="multipart/form-data" class="form">
+                <div class="grupo">
+                    <input type="file" name="documentEstadodecuenta" id="file1" accept=".pdf, .jpg, .png, .wep" class="file-input" required>
+                    <label>Seleccione Archivo IMG-PNG-WEP-PDF</label>
+                </div>
+                <button type="button" onclick="uploadDocument('documentEstadodecuenta', 'formDocumentEstadodecuenta')" class="btn btn-success">Subir</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function getCurrentSession() {
+            try {
+                const apiUrl = 'http://localhost:8080/api/session/current';
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`Error de red - ${response.status}`);
+                }
+                const data = await response.text();
+                const tempElement = document.createElement('div');
+                tempElement.innerHTML = data;
+                const userId = tempElement.querySelector('#id').innerText;
+                const resultElement = document.getElementById('result');
+                resultElement.innerText = `ID del Usuario: ${userId}`;
+                return userId; 
+            } catch (error) {
+                console.error('Error al obtener la sesión actual:', error);
+                alert(`Error al obtener la sesión actual: ${error.message}`);
+                return null;
+            }
+        }
+
+        async function uploadDocument(key, formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            const userId = await getCurrentSession(); 
+            if (userId) {
+                const apiUrl = `http://localhost:8080/api/session/${userId}/documents`;
+                fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(`Documento ${key} subido correctamente.`);
+                form.reset();
+                const allForms = document.querySelectorAll('.form');
+                allForms.forEach(form => form.reset());
+                })
+                .catch(error => {
+                    console.error(`Error al subir el documento ${key}: ${error.message}`);
+                    alert(`Error al subir el documento ${key}.`);
+                });
+            } else {
+                console.error('No se pudo obtener el ID del usuario.');
+                alert('Error al obtener el ID del usuario.');
+            }
+        }
+
+        function volverProducts() {
+            window.location.href = '/products';
+        }
+
+        getCurrentSession();
+    </script>
+</body>
+</html>
