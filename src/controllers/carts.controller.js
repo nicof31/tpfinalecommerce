@@ -19,10 +19,8 @@ class CartsController {
         if (PERSISTENCE === 'MONGO') {
           return res.render("carts/carts", { cart });
         } else if (PERSISTENCE === 'FILESYSTEM') {
-          console.log("estoy saliendo FS")
-          return res.render("carts/cartsfS", { cart });
+          return res.render("carts/cartsFs", { cart });
         } else {
-          console.log("estoy saliendo MONGO")
           return res.render("carts/carts", { cart });
         }
       } catch (error) {
